@@ -1,5 +1,1 @@
-Hello all! This is my website I'll be creating for my wedding in 2025.
-
-Yay!
-
-S + K!.
+Hello all! This is my website that svanbrugh and I (IBlearner) will be creating for our wedding! Stay tuned.
