@@ -1,42 +1,44 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    /* padding: 2rem; */
+    text-align: center;
+    width: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.barButtons {
+    font-family: "Nerko One", cursive;
+    font-size: 25px;
+    background-color: rgba(80, 56, 34, 0.644);
+    color: rgb(234, 241, 241);
+    transition-duration: 0.4s;
+    border-radius: 40px;
+    width: 300px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.barButtons:hover {
+    background-color: #114d28b2;
+    color: rgb(51, 47, 47);
+    border: none;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card {
-  padding: 2em;
+.barButtons:active {
+    box-shadow: 0 5px #114d28b2;
+    transform: translateY(4px);
 }
 
-.read-the-docs {
-  color: #888;
+.selected {
+    background-color: #114d28b2;
+}
+
+#buttonGroup {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }

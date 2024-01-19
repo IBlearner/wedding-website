@@ -1,16 +1,18 @@
 #home-text {
     font-size: 50px;
-    position: absolute;
-    font-family: "Monomaniac One", sans-serif;
+    position: relative;
+    top: 400px;
     font-family: "Niconne", cursive;
-    bottom: 65%;
-    color: black;
+    color: rgb(255, 255, 255);
+    background-color: rgba(35, 88, 66, 0.74);
 }
 #home-container {
-    position: relative;
+    margin-top: -70px;
+    background: url("../assets/background.jpg");
+    background-size: 100%;
 }
 
 #home-photo {
-    height: 700px;
-    width: 500px;
+    height: 850px;
+    width: 580px;
 }

@@ -25,41 +25,48 @@ function App() {
 
     return (
         <>
-            <button
-                onClick={() => {
-                    setCurrentPage("Home");
-                }}
-            >
-                Home
-            </button>
-            <button
-                onClick={() => {
-                    setCurrentPage("OurStory");
-                }}
-            >
-                Our Story
-            </button>
-            <button
-                onClick={() => {
-                    setCurrentPage("Schedule");
-                }}
-            >
-                Schedule
-            </button>
-            <button
-                onClick={() => {
-                    setCurrentPage("FAQ");
-                }}
-            >
-                FAQ Page
-            </button>
-            <button
-                onClick={() => {
-                    setCurrentPage("RSVP");
-                }}
-            >
-                RSVP
-            </button>
+            <div id="buttonGroup">
+                <button
+                    className={`barButtons ${currentPage === "Home" ? "selected" : ""}`}
+                    onClick={() => {
+                        setCurrentPage("Home");
+                    }}
+                >
+                    Home
+                </button>
+                <button
+                    className={`barButtons ${currentPage === "OurStory" ? "selected" : ""}`}
+                    onClick={() => {
+                        setCurrentPage("OurStory");
+                    }}
+                >
+                    Our Story
+                </button>
+                <button
+                    className={`barButtons ${currentPage === "Schedule" ? "selected" : ""}`}
+                    onClick={() => {
+                        setCurrentPage("Schedule");
+                    }}
+                >
+                    Schedule
+                </button>
+                <button
+                    className={`barButtons ${currentPage === "FAQ" ? "selected" : ""}`}
+                    onClick={() => {
+                        setCurrentPage("FAQ");
+                    }}
+                >
+                    FAQ
+                </button>
+                <button
+                    className={`barButtons ${currentPage === "RSVP" ? "selected" : ""}`}
+                    onClick={() => {
+                        setCurrentPage("RSVP");
+                    }}
+                >
+                    RSVP
+                </button>
+            </div>
             {getCurrentPage()}
         </>
     );
