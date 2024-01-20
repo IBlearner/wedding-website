@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
-import { google } from "googleapis";
+import { ChangeEvent, useEffect, useState } from "react";
 import "./RSVP.scss";
+
+interface NamesListObject {
+	[key: string]: string[];
+}
 
 export const RSVP = () => {
 	const [namesList, setNamesList] = useState<string[]>([]);
@@ -42,13 +45,13 @@ export const RSVP = () => {
 					})
 				);
 
-				let sortedData = {};
+				const sortedData: NamesListObject = {};
 				res.values
 					.map((elem: string[]) => {
 						return elem;
 					})
 					.forEach((elem: string[]) => {
-						if (sortedData.hasOwnProperty(elem[1])) {
+						if (Object.prototype.hasOwnProperty.call(sortedData, elem[1])) {
 							sortedData[elem[1]] = [...sortedData[elem[1]], elem[0]];
 						} else {
 							sortedData[elem[1]] = [elem[0]];
@@ -62,30 +65,29 @@ export const RSVP = () => {
 	};
 
 	const submitForm = () => {
-		fetch(
-			`https://sheets.googleapis.com/v4/spreadsheets/1AbMVXsGdPteKIpDI8OD3Va5FhlKGtNLfPcQiskoHvZU/values/Wedding guests!A1:B2?key=${
-				import.meta.env.VITE_GOOGLE_API_KEY
-			}`,
-			{
-				method: "PUT",
-				body: {
-					range: "Wedding guests!C1:C2",
-					values: [["fdsfs"], ["fsnds"]]
-				}
-			}
-		)
-			.then((response) => {
-				return response.json();
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		// 	fetch(
+		// 		`https://sheets.googleapis.com/v4/spreadsheets/1AbMVXsGdPteKIpDI8OD3Va5FhlKGtNLfPcQiskoHvZU/values/Wedding guests!A1:B2?key=${
+		// 			import.meta.env.VITE_GOOGLE_API_KEY
+		// 		}`,
+		// 		{
+		// 			method: "PUT",
+		// 			body: {
+		// 				range: "Wedding guests!C1:C2",
+		// 				values: [["fdsfs"], ["fsnds"]]
+		// 			}
+		// 		}
+		// 	)
+		// 		.then((response) => {
+		// 			return response.json();
+		// 		})
+		// 		.catch((error) => {
+		// 			console.log(error);
+		// 		});
 		console.log("submitting form..");
 	};
 
-	const onNameSearchChange = (val) => {
+	const onNameSearchChange = (val: ChangeEvent<HTMLInputElement>) => {
 		setNameSearch(val.target.value);
-		const regex = "";
 	};
 
 	const getNameSearch = () => {
@@ -96,7 +98,7 @@ export const RSVP = () => {
 					name="name-search"
 					type="text"
 					placeholder="Search your name!"
-					onChange={(val) => onNameSearchChange(val)}
+					onChange={(val: ChangeEvent<HTMLInputElement>) => onNameSearchChange(val)}
 				/>
 				{!nameSearch ? null : getNameSearchDropdown()}
 			</div>
