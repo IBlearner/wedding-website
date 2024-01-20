@@ -3,9 +3,9 @@ import { google } from "googleapis";
 import "./RSVP.scss";
 
 export const RSVP = () => {
-	const [namesList, setNamesList] = useState([]);
-	const [filteredNamesList, setfilteredNamesList] = useState([]);
-	const [nameSearch, setNameSearch] = useState("");
+	const [namesList, setNamesList] = useState<string[]>([]);
+	const [filteredNamesList, setfilteredNamesList] = useState<string[]>([]);
+	const [nameSearch, setNameSearch] = useState<string>("");
 
 	useEffect(() => {
 		// const auth = new google.auth.GoogleAuth({
@@ -25,7 +25,9 @@ export const RSVP = () => {
 
 	const getGuestList = () => {
 		fetch(
-			"https://sheets.googleapis.com/v4/spreadsheets/1AbMVXsGdPteKIpDI8OD3Va5FhlKGtNLfPcQiskoHvZU/values/Wedding guests!A1:B61?key=AIzaSyDXlaLu9_omOiZtqcwVbH-c0uVwRg9lR7E",
+			`https://sheets.googleapis.com/v4/spreadsheets/1AbMVXsGdPteKIpDI8OD3Va5FhlKGtNLfPcQiskoHvZU/values/Wedding guests!A1:B61?key=${
+				import.meta.env.VITE_GOOGLE_API_KEY
+			}`,
 			{
 				method: "GET"
 			}
@@ -61,7 +63,9 @@ export const RSVP = () => {
 
 	const submitForm = () => {
 		fetch(
-			"https://sheets.googleapis.com/v4/spreadsheets/1AbMVXsGdPteKIpDI8OD3Va5FhlKGtNLfPcQiskoHvZU/values/Wedding guests!A1:B2?key=AIzaSyDXlaLu9_omOiZtqcwVbH-c0uVwRg9lR7E",
+			`https://sheets.googleapis.com/v4/spreadsheets/1AbMVXsGdPteKIpDI8OD3Va5FhlKGtNLfPcQiskoHvZU/values/Wedding guests!A1:B2?key=${
+				import.meta.env.VITE_GOOGLE_API_KEY
+			}`,
 			{
 				method: "PUT",
 				body: {
@@ -100,13 +104,29 @@ export const RSVP = () => {
 	};
 
 	const getNameSearchDropdown = () => {
-		return filteredNamesList.map((elem) => {
+		return filteredNamesList.map((elem: string) => {
+			const elemReplaced = elem.replace(nameSearch, ".");
+			const startSlice = elemReplaced.slice(0, elemReplaced.indexOf("."));
+			const endSlice = elemReplaced.slice(elemReplaced.indexOf(".") + 1);
+
 			return (
 				<div className="name-search-dropdown-option" tabIndex={0}>
-					{elem}
+					{startSlice}
+					<strong>{nameSearch}</strong>
+					{endSlice}
 				</div>
 			);
 		});
+	};
+
+	const getForm = () => {
+		return (
+			<>
+				<label htmlFor=""></label>
+				<label htmlFor=""></label>; Name: <input type="text" name="fname" />
+				<input type="submit" value="Submit" />
+			</>
+		);
 	};
 
 	return (
@@ -114,9 +134,7 @@ export const RSVP = () => {
 			<button onClick={submitForm}>clickk</button>
 			<form onSubmit={submitForm}>
 				{getNameSearch()}
-				<label htmlFor=""></label>
-				{/* Name: <input type="text" name="fname" /> */}
-				{/* <input type="submit" value="Submit" /> */}
+				{getForm()}
 			</form>
 		</>
 	);
