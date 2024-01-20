@@ -1,7 +1,15 @@
 * {
     box-sizing: border-box;
 }
+.years {
+    font-family: "Fredericka the Great", serif;
+    font-size: 40px;
+}
 
+.descript {
+    font-family: "Pompiere", sans-serif;
+    font-size: 25px;
+}
 .timeline {
     position: relative;
     max-width: 1200px;
@@ -11,12 +19,13 @@
 .timeline::after {
     content: "";
     position: absolute;
-    width: 6px;
-    background-color: white;
+    width: 10px;
+
+    background-color: rgba(27, 145, 110, 0.699);
     top: 0;
     bottom: 0;
     left: 50%;
-    margin-left: -3px;
+    margin-left: -5px;
 }
 
 .container {
@@ -27,28 +36,32 @@
     object-fit: cover;
 }
 
+.container img:hover {
+    transform: scale(2.5);
+}
+
 .container img {
-    width: 60%;
+    width: 70%;
+    border-radius: 20%;
 }
 .container::after {
-    content: "";
+    // content: url(../assets/leaf.jpg);
+    content: ("");
     position: absolute;
     width: 25px;
     height: 25px;
     right: -17px;
-    background-color: white;
-    border: 4px solid #107255;
-    top: 15px;
+    background-color: rgb(159, 199, 159);
+    border: 4px solid #107255bb;
+    top: 250px;
     border-radius: 50%;
     z-index: 1;
 }
 
-/* Place the container to the left */
 .left {
     left: 0;
 }
 
-/* Place the container to the right */
 .right {
     left: 50%;
 }
@@ -58,13 +71,13 @@
     content: " ";
     height: 0;
     position: absolute;
-    top: 22px;
+    top: 260px;
     width: 0;
     z-index: 1;
     right: 30px;
-    border: medium solid white;
+    border: medium solid rgb(0, 0, 0);
     border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent white;
+    border-color: transparent transparent transparent rgb(212, 186, 155);
 }
 
 /* Add arrows to the right container (pointing left) */
@@ -72,13 +85,13 @@
     content: " ";
     height: 0;
     position: absolute;
-    top: 22px;
+    top: 260px;
     width: 0;
     z-index: 1;
     left: 30px;
-    border: medium solid white;
+    border: medium solid rgb(76, 179, 62);
     border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+    border-color: transparent rgb(212, 186, 155) transparent transparent;
 }
 
 /* Fix the circle for containers on the right side */
@@ -88,10 +101,12 @@
 
 /* The actual content */
 .content {
-    padding: 20px 30px;
-    background-color: white;
+    padding: 10px 20px;
+    background-color: rgba(212, 186, 155, 0.616);
     position: relative;
-    border-radius: 6px;
+    border-radius: 100px;
+    border-color: black;
+    border-width: 10px 0 10px 10px;
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
