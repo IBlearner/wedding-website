@@ -26,9 +26,9 @@ function App() {
     return (
         <>
             <div id="home-banner">
-                <h1 className="home-name">Kien Vi </h1>
-                <h2 id="home-other">AND</h2>
-                <h1 className="home-name">Samantha </h1>
+                <h1 className="home-name">╼ Kien Vi </h1>
+                <h2 id="home-other">&</h2>
+                <h1 className="home-name">Samantha ╾ </h1>
             </div>
             <div id="buttonGroup">
                 <button
@@ -37,7 +37,7 @@ function App() {
                         setCurrentPage("Home");
                     }}
                 >
-                    Home
+                    ❀ Home ❀
                 </button>
                 <button
                     className={`barButtons ${currentPage === "OurStory" ? "selected" : ""}`}
@@ -45,7 +45,7 @@ function App() {
                         setCurrentPage("OurStory");
                     }}
                 >
-                    Our Story
+                    ❀ Our Story ❀
                 </button>
                 <button
                     className={`barButtons ${currentPage === "Schedule" ? "selected" : ""}`}
@@ -53,7 +53,7 @@ function App() {
                         setCurrentPage("Schedule");
                     }}
                 >
-                    Schedule
+                    ❀ Schedule ❀
                 </button>
                 <button
                     className={`barButtons ${currentPage === "FAQ" ? "selected" : ""}`}
@@ -61,7 +61,7 @@ function App() {
                         setCurrentPage("FAQ");
                     }}
                 >
-                    FAQ
+                    ❀ FAQ ❀
                 </button>
                 <button
                     className={`barButtons ${currentPage === "RSVP" ? "selected" : ""}`}
@@ -69,9 +69,10 @@ function App() {
                         setCurrentPage("RSVP");
                     }}
                 >
-                    RSVP
+                    ❀ RSVP ❀
                 </button>
             </div>
+
             {getCurrentPage()}
         </>
     );
