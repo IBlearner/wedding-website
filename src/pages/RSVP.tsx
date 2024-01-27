@@ -9,6 +9,7 @@ export const RSVP = () => {
 	const [namesList, setNamesList] = useState<string[]>([]);
 	const [filteredNamesList, setfilteredNamesList] = useState<string[]>([]);
 	const [nameSearch, setNameSearch] = useState<string>("");
+	const [selectedUser, setSelectedUser] = useState<string>("");
 
 	useEffect(() => {
 		// const auth = new google.auth.GoogleAuth({
@@ -92,52 +93,96 @@ export const RSVP = () => {
 
 	const getNameSearch = () => {
 		return (
-			<div id="name-search">
-				{!nameSearch ? null : <label htmlFor="name-search">Search for your name</label>}
+			<div id="name-search-container">
+				{nameSearch ? <label htmlFor="name-search">Search for your name</label> : null}
 				<input
+					id="name-search"
 					name="name-search"
 					type="text"
 					placeholder="Search your name!"
 					onChange={(val: ChangeEvent<HTMLInputElement>) => onNameSearchChange(val)}
 				/>
-				{!nameSearch ? null : getNameSearchDropdown()}
+				{nameSearch ? getNameSearchDropdown() : null}
 			</div>
 		);
 	};
 
 	const getNameSearchDropdown = () => {
-		return filteredNamesList.map((elem: string) => {
-			const elemReplaced = elem.replace(nameSearch, ".");
-			const startSlice = elemReplaced.slice(0, elemReplaced.indexOf("."));
-			const endSlice = elemReplaced.slice(elemReplaced.indexOf(".") + 1);
+		return (
+			<div id="name-search-dropdown">
+				{filteredNamesList.map((elem: string) => {
+					const elemReplaced = elem.replace(nameSearch, ".");
+					const startSlice = elemReplaced.slice(0, elemReplaced.indexOf("."));
+					const endSlice = elemReplaced.slice(elemReplaced.indexOf(".") + 1);
 
-			return (
-				<div className="name-search-dropdown-option" tabIndex={0}>
-					{startSlice}
-					<strong>{nameSearch}</strong>
-					{endSlice}
-				</div>
-			);
-		});
+					return (
+						<div
+							className="name-search-dropdown-option"
+							tabIndex={0}
+							onClick={() => onNameSearchDropdownClick(elem)}
+						>
+							{startSlice}
+							<strong>{nameSearch}</strong>
+							{endSlice}
+						</div>
+					);
+				})}
+			</div>
+		);
+	};
+
+	// When the user clicks on a name in the search dropdown
+	const onNameSearchDropdownClick = (name: string) => {
+		setSelectedUser(name);
+		setNameSearch("");
+		(document.getElementById("name-search") as HTMLInputElement).value = "";
 	};
 
 	const getForm = () => {
 		return (
-			<>
-				<label htmlFor=""></label>
-				<label htmlFor=""></label>; Name: <input type="text" name="fname" />
+			<form id="form-container" onSubmit={submitForm}>
+				<label htmlFor="fname">Name</label>
+				<input
+					type="text"
+					name="fname"
+					value={selectedUser.slice(0, selectedUser.indexOf(" "))}
+					disabled={true}
+				/>
+				<label htmlFor="lname">Surname</label>
+				<input
+					type="text"
+					name="fname"
+					value={selectedUser.slice(selectedUser.indexOf(" "), selectedUser.length)}
+					disabled={true}
+				/>
+				<label htmlFor="phone">Please provide your phone</label>
+				{/* fix this pattern */}
+				<input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+				<label htmlFor="email">Please provide your email</label>
+				<input type="email" name="email" required />
+				<label htmlFor="wedding">Attending the wedding?</label>
+				<input type="checkbox" name="wedding" required />
+				<label htmlFor="ceremony">Attending the ceremony</label>
+				<input type="checkbox" name="ceremony" required />
+				<label htmlFor="dinner">Attending the dinner</label>
+				<input type="checkbox" name="dinner" required />
+				<label htmlFor="allergies">Do you have any allergies?</label>
+				<input type="checkbox" name="allergies" />
 				<input type="submit" value="Submit" />
-			</>
+			</form>
 		);
 	};
 
+	const clearSelectedUser = () => {
+		setSelectedUser("");
+		// setNameSearch("");
+	};
+
 	return (
-		<>
-			<button onClick={submitForm}>clickk</button>
-			<form onSubmit={submitForm}>
-				{getNameSearch()}
-				{getForm()}
-			</form>
-		</>
+		<div id="rsvp-container">
+			{getNameSearch()}
+			{selectedUser ? <h1>{selectedUser}</h1> : null}
+			{selectedUser ? getForm() : null}
+		</div>
 	);
 };

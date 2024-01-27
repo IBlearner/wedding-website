@@ -1,5 +1,12 @@
-#name-search {
+#rsvp-container {
 	color: black;
+}
+
+#name-search-dropdown {
+	position: absolute;
+	left: 50%;
+	// margin-left: -50%;
+	background-color: red;
 }
 
 .name-search-dropdown-option:hover {
