@@ -10,6 +10,9 @@ export const RSVP = () => {
 	const [filteredNamesList, setfilteredNamesList] = useState<string[]>([]);
 	const [nameSearch, setNameSearch] = useState<string>("");
 	const [selectedUser, setSelectedUser] = useState<string>("");
+	const [wedding, setWedding] = useState<boolean | null>(null);
+	const [ceremony, setCeremony] = useState<boolean | null>(null);
+	const [dinner, setDinner] = useState<boolean | null>(null);
 
 	useEffect(() => {
 		// const auth = new google.auth.GoogleAuth({
@@ -37,6 +40,7 @@ export const RSVP = () => {
 			}
 		)
 			.then((response) => {
+				console.log(response);
 				return response.json();
 			})
 			.then((res) => {
@@ -138,7 +142,13 @@ export const RSVP = () => {
 		return (
 			<form id="form-container" onSubmit={submitForm}>
 				<label htmlFor="fname">Name</label>
-				<input type="text" name="fname" value={selectedUser.slice(0, selectedUser.indexOf(" "))} disabled={true} />
+				<input
+					type="text"
+					name="fname"
+					id="fname"
+					value={selectedUser.slice(0, selectedUser.indexOf(" "))}
+					disabled={true}
+				/>
 				<label htmlFor="lname">Surname</label>
 				<input
 					type="text"
@@ -146,20 +156,51 @@ export const RSVP = () => {
 					value={selectedUser.slice(selectedUser.indexOf(" "), selectedUser.length)}
 					disabled={true}
 				/>
+
 				<label htmlFor="phone">Please provide your phone</label>
 				{/* fix this pattern */}
 				<input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
 				<label htmlFor="email">Please provide your email</label>
 				<input type="email" name="email" required />
-				<label htmlFor="wedding">Attending the wedding?</label>
-				<input type="checkbox" name="wedding" required />
-				<label htmlFor="ceremony">Attending the ceremony</label>
-				<input type="checkbox" name="ceremony" required />
-				<label htmlFor="dinner">Attending the dinner</label>
-				<input type="checkbox" name="dinner" required />
-				<label htmlFor="allergies">Do you have any allergies?</label>
-				<input type="checkbox" name="allergies" />
-				<input type="submit" value="Submit" />
+
+				<p>Attending the wedding?</p>
+				<input type="radio" id="weddingYes" name="wedding" value="weddingYes" onClick={() => setWedding(true)} />
+				<label htmlFor="wedding">Yes</label>
+				<input type="radio" id="weddingNo" name="wedding" value="weddingNo" onClick={() => setWedding(false)} />
+				<label htmlFor="wedding">No</label>
+
+				{wedding ? (
+					<>
+						<p>Attending the ceremony?</p>
+						<input
+							type="radio"
+							id="ceremonyYes"
+							name="ceremony"
+							value="ceremonyYes"
+							onClick={() => setCeremony(true)}
+						/>
+						<label htmlFor="ceremony">Yes</label>
+						<input type="radio" id="ceremonyNo" name="ceremony" value="ceremonyNo" onClick={() => setCeremony(false)} />
+						<label htmlFor="ceremony">No</label>
+
+						{ceremony !== null ? (
+							<>
+								<p>Attending the dinner?</p>
+								<input type="radio" id="dinnerYes" name="dinner" value="dinnerYes" onClick={() => setDinner(true)} />
+								<label htmlFor="dinner">Yes</label>
+								<input type="radio" id="dinnerNo" name="dinner" value="dinnerNo" onClick={() => setDinner(false)} />
+								<label htmlFor="dinner">No</label>
+								{dinner ? (
+									<>
+										<label htmlFor="allergies">Do you have any allergies?</label>
+										<input type="type" name="allergies" placeholder="Leave blank if N/A" />
+										<input type="submit" value="Submit" />
+									</>
+								) : null}
+							</>
+						) : null}
+					</>
+				) : null}
 			</form>
 		);
 	};
