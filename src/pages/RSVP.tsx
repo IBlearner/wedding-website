@@ -33,7 +33,7 @@ export const RSVP = () => {
 				import.meta.env.VITE_GOOGLE_API_KEY
 			}`,
 			{
-				method: "GET"
+				method: "GET",
 			}
 		)
 			.then((response) => {
@@ -116,11 +116,7 @@ export const RSVP = () => {
 					const endSlice = elemReplaced.slice(elemReplaced.indexOf(".") + 1);
 
 					return (
-						<div
-							className="name-search-dropdown-option"
-							tabIndex={0}
-							onClick={() => onNameSearchDropdownClick(elem)}
-						>
+						<div className="name-search-dropdown-option" tabIndex={0} onClick={() => onNameSearchDropdownClick(elem)}>
 							{startSlice}
 							<strong>{nameSearch}</strong>
 							{endSlice}
@@ -142,12 +138,7 @@ export const RSVP = () => {
 		return (
 			<form id="form-container" onSubmit={submitForm}>
 				<label htmlFor="fname">Name</label>
-				<input
-					type="text"
-					name="fname"
-					value={selectedUser.slice(0, selectedUser.indexOf(" "))}
-					disabled={true}
-				/>
+				<input type="text" name="fname" value={selectedUser.slice(0, selectedUser.indexOf(" "))} disabled={true} />
 				<label htmlFor="lname">Surname</label>
 				<input
 					type="text"
@@ -173,10 +164,10 @@ export const RSVP = () => {
 		);
 	};
 
-	const clearSelectedUser = () => {
-		setSelectedUser("");
-		// setNameSearch("");
-	};
+	// const clearSelectedUser = () => {
+	// 	setSelectedUser("");
+	// 	// setNameSearch("");
+	// };
 
 	return (
 		<div id="rsvp-container">
