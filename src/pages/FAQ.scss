@@ -1,19 +1,35 @@
 #faq-texts {
-    background-color: rgba(200, 241, 228, 0.63);
-    width: 50%;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+	background-color: rgba(200, 241, 228, 0.63);
+	width: 50%;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
 }
 
 .question-heading {
-    font-family: "Love Ya Like A Sister", cursive;
-    font-size: 50px;
+	font-family: "Love Ya Like A Sister", cursive;
+	font-size: 50px;
 }
 
 .faq-text {
-    font-family: "Pompiere", sans-serif;
-    font-size: 35px;
-    margin-bottom: 90px;
-    color: black;
+	font-family: "Pompiere", sans-serif;
+	font-size: 35px;
+	margin-bottom: 90px;
+	color: black;
+}
+
+@media only screen and (max-width: 768px) {
+	#faq-texts {
+		width: 100%;
+		padding: 0 30px;
+	}
+
+	.question-heading {
+		font-size: 30px;
+	}
+
+	.faq-text {
+		font-size: 25px;
+		margin: 0;
+	}
 }
