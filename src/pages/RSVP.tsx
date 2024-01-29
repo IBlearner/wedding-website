@@ -11,8 +11,7 @@ export const RSVP = () => {
 	const [nameSearch, setNameSearch] = useState<string>("");
 	const [selectedUser, setSelectedUser] = useState<string>("");
 	const [wedding, setWedding] = useState<boolean | null>(null);
-	const [ceremony, setCeremony] = useState<boolean | null>(null);
-	const [dinner, setDinner] = useState<boolean | null>(null);
+	const [attendance, setAttendance] = useState<0 | 1 | 2 | 3>(0);
 
 	useEffect(() => {
 		// const auth = new google.auth.GoogleAuth({
@@ -36,11 +35,10 @@ export const RSVP = () => {
 				import.meta.env.VITE_GOOGLE_API_KEY
 			}`,
 			{
-				method: "GET",
+				method: "GET"
 			}
 		)
 			.then((response) => {
-				console.log(response);
 				return response.json();
 			})
 			.then((res) => {
@@ -120,7 +118,11 @@ export const RSVP = () => {
 					const endSlice = elemReplaced.slice(elemReplaced.indexOf(".") + 1);
 
 					return (
-						<div className="name-search-dropdown-option" tabIndex={0} onClick={() => onNameSearchDropdownClick(elem)}>
+						<div
+							className="name-search-dropdown-option"
+							tabIndex={0}
+							onClick={() => onNameSearchDropdownClick(elem)}
+						>
 							{startSlice}
 							<strong>{nameSearch}</strong>
 							{endSlice}
@@ -140,65 +142,80 @@ export const RSVP = () => {
 
 	const getForm = () => {
 		return (
-			<form id="form-container" onSubmit={submitForm}>
-				<label htmlFor="fname">Name</label>
-				<input
-					type="text"
-					name="fname"
-					id="fname"
-					value={selectedUser.slice(0, selectedUser.indexOf(" "))}
-					disabled={true}
-				/>
-				<label htmlFor="lname">Surname</label>
-				<input
-					type="text"
-					name="fname"
-					value={selectedUser.slice(selectedUser.indexOf(" "), selectedUser.length)}
-					disabled={true}
-				/>
-
-				<label htmlFor="phone">Please provide your phone</label>
+			<form id="form-container" onSubmit={() => submitForm()}>
+				<label htmlFor="phone">Phone</label>
 				{/* fix this pattern */}
 				<input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
-				<label htmlFor="email">Please provide your email</label>
+				<br />
+				<label htmlFor="email">Email</label>
 				<input type="email" name="email" required />
-
-				<p>Attending the wedding?</p>
-				<input type="radio" id="weddingYes" name="wedding" value="weddingYes" onClick={() => setWedding(true)} />
+				<br />
+				<label htmlFor="wedding">Attending the wedding?</label>
+				<br />
+				<input
+					type="radio"
+					id="weddingYes"
+					name="wedding"
+					value="weddingYes"
+					onClick={() => setWedding(true)}
+				/>
 				<label htmlFor="wedding">Yes</label>
-				<input type="radio" id="weddingNo" name="wedding" value="weddingNo" onClick={() => setWedding(false)} />
+				<input
+					type="radio"
+					id="weddingNo"
+					name="wedding"
+					value="weddingNo"
+					onClick={() => {
+						setWedding(false);
+						// We need to toggle attendance back to 0 if the user flicks between choices
+						setAttendance(0);
+					}}
+				/>
 				<label htmlFor="wedding">No</label>
-
 				{wedding ? (
 					<>
-						<p>Attending the ceremony?</p>
+						<br />
+						<label htmlFor="attendance">Will you attend both the ceremony and dinner?</label>
+						<br />
 						<input
 							type="radio"
-							id="ceremonyYes"
-							name="ceremony"
-							value="ceremonyYes"
-							onClick={() => setCeremony(true)}
+							id="ceremony"
+							name="attendance"
+							value="ceremony"
+							onClick={() => setAttendance(1)}
 						/>
-						<label htmlFor="ceremony">Yes</label>
-						<input type="radio" id="ceremonyNo" name="ceremony" value="ceremonyNo" onClick={() => setCeremony(false)} />
-						<label htmlFor="ceremony">No</label>
+						<label htmlFor="ceremony">Only ceremony</label>
+						<input
+							type="radio"
+							id="dinner"
+							name="attendance"
+							value="dinner"
+							onClick={() => setAttendance(2)}
+						/>
+						<label htmlFor="dinner">Only dinner</label>
+						<input type="radio" id="both" name="attendance" value="both" onClick={() => setAttendance(3)} />
+						<label htmlFor="both">Both</label>
 
-						{ceremony !== null ? (
+						{attendance ? (
 							<>
-								<p>Attending the dinner?</p>
-								<input type="radio" id="dinnerYes" name="dinner" value="dinnerYes" onClick={() => setDinner(true)} />
-								<label htmlFor="dinner">Yes</label>
-								<input type="radio" id="dinnerNo" name="dinner" value="dinnerNo" onClick={() => setDinner(false)} />
-								<label htmlFor="dinner">No</label>
-								{dinner ? (
+								{attendance === 2 || attendance === 3 ? (
 									<>
+										<br />
 										<label htmlFor="allergies">Do you have any allergies?</label>
+										<br />
 										<input type="type" name="allergies" placeholder="Leave blank if N/A" />
-										<input type="submit" value="Submit" />
 									</>
 								) : null}
+								<br />
+								<input type="submit" value="Submit" />
 							</>
 						) : null}
+					</>
+				) : null}
+				{wedding === false ? (
+					<>
+						<br />
+						<input type="submit" value="Submit" />
 					</>
 				) : null}
 			</form>
