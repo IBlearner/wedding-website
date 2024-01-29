@@ -7,7 +7,7 @@ import imagenand from "../assets/nandos2.jpg";
 import imagesing from "../assets/singaporpe.jpg";
 import imagejapan from "../assets/Japan.jpg";
 import imagegrad from "../assets/grad.png";
-import imageviet from "../assets/halongbay.jpg";
+import imageviet from "../assets/halongbayy.jpg";
 import imagesold from "../assets/sold.jpg";
 import imageaccent from "../assets/accenture.jpg";
 
@@ -18,8 +18,8 @@ export const OurStory = () => {
 				<div className="content">
 					<h2 className="years">2009</h2>
 					<p className="descript">
-						First year at high school. Kien Vi & Sam both attended Clairvaux Macillop College at Upper Mt Gravatt but
-						barely knew each other existed.
+						First year at high school. Kien Vi & Sam both attended Clairvaux Macillop College at Upper Mt
+						Gravatt but barely knew each other existed.
 					</p>
 
 					<img id="cmc-photo" src={imagecmc} alt="cmcphoto" />
@@ -29,9 +29,9 @@ export const OurStory = () => {
 				<div className="content">
 					<h2 className="years">2011</h2>
 					<p className="descript">
-						In 2011, both of them moved to Queensland Academy for Science, Mathematics & Technology to pursue their love
-						for academia with a bunch of other people from CMC. This is where their love story started on the 11th of
-						April 2011.
+						In 2011, both of them moved to Queensland Academy for Science, Mathematics & Technology to
+						pursue their love for academia with a bunch of other people from CMC. This is where their love
+						story started on the 11th of April 2011.
 					</p>
 					<img id="qa-photo" src={imageqa} alt="qaphoto" />
 				</div>
@@ -40,8 +40,8 @@ export const OurStory = () => {
 				<div className="content">
 					<h2 className="years">2013</h2>
 					<p className="descript">
-						In 2013, both of them graduated from high school to pursue Engineering and Science Degrees from Queensland
-						University of Technology.
+						In 2013, both of them graduated from high school to pursue Engineering and Science Degrees from
+						Queensland University of Technology.
 					</p>
 					<img id="formal-photo" src={imageformal} alt="formalphoto" />
 				</div>
@@ -59,8 +59,8 @@ export const OurStory = () => {
 				<div className="content">
 					<h2 className="years">2016</h2>
 					<p className="descript">
-						In 2016, they found themselves changing degrees that fit within their passions. Kien Vi joined Sam at
-						Nandos!
+						In 2016, they found themselves changing degrees that fit within their passions. Kien Vi joined
+						Sam at Nandos!
 					</p>
 					<img id="nando1-photo" src={imagenand} alt="nando1photo" />
 				</div>
@@ -69,7 +69,8 @@ export const OurStory = () => {
 				<div className="content">
 					<h2 className="years">2017</h2>
 					<p className="descript">
-						In 2017, Sam & Kien Vi enjoyed their first overseas trip together to Malaysia, Singapore and Thailand.
+						In 2017, Sam & Kien Vi enjoyed their first overseas trip together to Malaysia, Singapore and
+						Thailand.
 					</p>
 					<img id="singapore-photo" src={imagesing} alt="singphoto" />
 				</div>
@@ -85,8 +86,8 @@ export const OurStory = () => {
 				<div className="content">
 					<h2 className="years">2020</h2>
 					<p className="descript">
-						In 2020, both of them finally graduated from their Bachelors Degrees where Sam continued to pursue
-						postgraduate studies and Kien Vi was pursuing a Junior Web Developer position.
+						In 2020, both of them finally graduated from their Bachelors Degrees where Sam continued to
+						pursue postgraduate studies and Kien Vi was pursuing a Junior Web Developer position.
 					</p>
 					<img id="grad-photo" src={imagegrad} alt="gradphoto" />
 				</div>
@@ -95,7 +96,8 @@ export const OurStory = () => {
 				<div className="content">
 					<h2 className="years">2021</h2>
 					<p className="descript">
-						Kien Vi & Sam both finally left Nandos and found full time jobs at Accenture & Mater Hospital respectively!
+						Kien Vi & Sam both finally left Nandos and found full time jobs at Accenture & Mater Hospital
+						respectively!
 					</p>
 					<img id="accen-photo" src={imageaccent} alt="accentphoto" />
 				</div>
@@ -111,8 +113,8 @@ export const OurStory = () => {
 				<div className="content">
 					<h2 className="years">November 2023</h2>
 					<p className="descript">
-						In November 2023, they went to Vietnam for a holiday and to visit Kien Vi's family. This is where they got
-						engaged, 12 years after being in eachothers life.
+						In November 2023, they went to Vietnam for a holiday and to visit Kien Vi's family. This is
+						where they got engaged, 12 years after being in eachothers life.
 					</p>
 					<img id="engaged-photo" src={imageviet} alt="engagephoto" />
 				</div>
