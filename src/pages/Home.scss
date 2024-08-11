@@ -1,19 +1,19 @@
 #home-container {
 	display: flex;
-	flex-direction: row;
-}
-
-#homediv {
-	width: 100%;
+	flex-direction: column;
 }
 
 #home-photo {
-	height: auto;
-	width: auto;
-	max-width: 50%;
+	width: 100vw;
+
+	img {
+		height: auto;
+		width: 100%;
+		max-width: 100%;
+	}
 }
 
-#home-texts {
+#home-info {
 	width: 60%;
 	display: flex;
 	flex-direction: column;
@@ -36,15 +36,11 @@
 }
 
 @media only screen and (max-width: 768px) {
-	#home-container {
-		flex-direction: column-reverse;
-	}
-
 	#home-photo {
 		border-radius: 100px;
 	}
 
-	#home-texts {
+	#home-info {
 		width: 100%;
 	}
 
