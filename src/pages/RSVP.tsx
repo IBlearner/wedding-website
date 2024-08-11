@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import "./RSVP.scss";
+import "./rsvp.scss";
 
 interface NamesListObject {
 	[key: string]: string[];

@@ -26,14 +26,14 @@ function App() {
 
 	const getCurrentPage = () => {
 		if (currentPage === "Home") {
-			return <Home />;
+			return <Home navigateToRsvp={navigateToRsvp} />;
 		} else if (currentPage === "OurStory") {
 			return <OurStory />;
 		} else if (currentPage === "Schedule") {
 			return <Schedule />;
 		} else if (currentPage === "FAQ") {
 			return <FAQ />;
-		} else if (currentPage === "RSVP") {
+		} else if (currentPage === "rsvp") {
 			return <RSVP />;
 		}
 	};
@@ -62,6 +62,10 @@ function App() {
 				<div>{formatDistanceStrict(Date.now(), weddingDay, { unit: "day" })} more days to go!</div>
 			</div>
 		);
+	};
+
+	const navigateToRsvp = () => {
+		setCurrentPage("rsvp");
 	};
 
 	return (
