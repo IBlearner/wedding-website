@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
-import { Home } from "./pages/Home.tsx";
-import { OurStory } from "./pages/OurStory.tsx";
+import { Home } from "./pages/home.tsx";
+import { OurStory } from "./pages/ourStory.tsx";
 import { FAQ } from "./pages/faq.tsx";
 import { RSVP } from "./pages/rsvp.tsx";
 import { Schedule } from "./pages/schedule.tsx";
