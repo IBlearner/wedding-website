@@ -1,4 +1,4 @@
-import "./OurStory.scss";
+import "./ourStory.scss";
 import imageqa from "../assets/qa.jpg";
 import imageformal from "../assets/formal.jpg";
 import imagenandos from "../assets/nandos1.jpg";
