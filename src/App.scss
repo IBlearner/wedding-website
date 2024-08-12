@@ -20,20 +20,17 @@ html {
 	width: 100%;
 	justify-content: space-around;
 	padding: 0 15% 40px 15%;
-
-	// background-color: rgba(136, 173, 150, 0.548);
 }
 
 .menu-tab {
+	padding-bottom: 10px;
+
 	font-size: 25px;
 	font-weight: 900;
 	background-color: transparent;
-	// color: rgba(136, 173, 150, 0.548);
-	color: black;
 	transition-duration: 0.8s;
-	padding-bottom: 10px;
-
 	letter-spacing: 4px;
+	color: rgba(63, 82, 58, 0.904);
 }
 
 .menu-tab.selected {
