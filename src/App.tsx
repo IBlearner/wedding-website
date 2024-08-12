@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
-import { Home } from "./pages/Home";
-import { OurStory } from "./pages/OurStory";
-import { FAQ } from "./pages/faq";
-import { RSVP } from "./pages/rsvp";
-import { Schedule } from "./pages/schedule";
-import { Footer } from "./components/footer/footer";
+import { Home } from "./pages/Home.tsx";
+import { OurStory } from "./pages/OurStory.tsx";
+import { FAQ } from "./pages/faq.tsx";
+import { RSVP } from "./pages/rsvp.tsx";
+import { Schedule } from "./pages/schedule.tsx";
+import { Footer } from "./components/footer/footer.tsx";
 import { formatDistanceStrict } from "date-fns";
 // Icon imports
 import { IoIosMenu } from "react-icons/io";
@@ -111,9 +111,9 @@ function App() {
 					FAQ
 				</button>
 				<button
-					className={`menu-tab ${currentPage === "RSVP" ? "selected" : ""}`}
+					className={`menu-tab ${currentPage === "rsvp" ? "selected" : ""}`}
 					onClick={() => {
-						setCurrentPage("RSVP");
+						setCurrentPage("rsvp");
 						closeMobileMenu();
 					}}
 				>
