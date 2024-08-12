@@ -1,4 +1,4 @@
-import "./FAQ.scss";
+import "./faq.scss";
 import { faqData as data } from "../common/constants";
 import { Ifaq } from "../common/types";
 // Icon imports

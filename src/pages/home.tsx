@@ -1,6 +1,6 @@
 import photo from "../assets/homeviet2.png";
 
-import "./Home.scss";
+import "./home.scss";
 export const Home = (props: { navigateToRsvp: () => void }) => {
 	const getRsvpButton = () => {
 		return (
